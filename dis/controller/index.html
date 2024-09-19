@@ -4,12 +4,17 @@
     <meta charset="UTF-8" />
     <title>Controller</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Controller</h1>
-    <textarea id="topic" placeholder="Enter the topic for discussion"></textarea>
+    <div class="hinweis"> 
+      <marquee behavior="scroll" direction="left">
+        Alle Informationen sind KI-generiert und nicht geprüft. Wir tragen keine Verantwortung bezüglich der Richtigkeit der Inhalte.
+      </marquee>
+    </div>
+    <textarea id="topic" placeholder=">"></textarea>
     <button id="start-discussion">Start</button>
-    <button id="abort-discussion">Abort</button>
+    <button id="abort-discussion">Konversation abbrechen</button>
     <script src="index.js"></script>
   </body>
 </html>

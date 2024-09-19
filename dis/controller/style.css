@@ -1,0 +1,59 @@
+body {
+    background-color: black;
+}
+@font-face {
+    font-family: "VCR_OSD_MONO"; /* Name der Schriftart */
+    src: url("../fonts/vcr.ttf") format("truetype");
+}
+
+h1 {
+    font-family: "VCR_OSD_MONO";
+    font-size: 20px;
+    color: green;
+  }
+
+.hinweis {
+    font-family: "VCR_OSD_MONO";
+    font-size: 30px;
+    color: #11C40E;
+    with: 100%;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #11C40E;
+    text-transform: uppercase;
+    margin-left: -0.25em;
+    margin-right: -0.25em;
+  }
+
+
+label,
+textarea {
+    font-family: "VCR_OSD_MONO";
+    font-size: 30px;
+    color: #11C40E;
+    background: black;
+}
+
+textarea {
+  padding: 10px;
+  max-width: 100%;
+  border-radius: 5px;
+  border: none;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#abort-discussion {
+    padding: 10px;
+    background-color: black;
+    color: #11C40E;
+    font-size: 30px;
+    text-transform: uppercase;
+    border: 3px solid #11C40E;
+    font-family: "VCR_OSD_MONO";
+    cursor: pointer;
+}
+
