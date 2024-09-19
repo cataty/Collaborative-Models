@@ -6,11 +6,14 @@ body {
     src: url("../fonts/vcr.ttf") format("truetype");
 }
 
-h1 {
+
+p {
     font-family: "VCR_OSD_MONO";
-    font-size: 20px;
-    color: green;
-  }
+    font-size: 30px;
+    color: #11C40E;
+    text-transform: uppercase;
+}
+
 
 .hinweis {
     font-family: "VCR_OSD_MONO";
@@ -57,3 +60,17 @@ label {
     cursor: pointer;
 }
 
+/* Container für die zwei Spalten */
+.content {
+    display: flex;
+    height: calc(100vh - 50px); /* Höhe des Fensters minus Marquee */
+}
+/* Jede Spalte */
+.column {
+    flex: 1;
+    padding: 20px;
+}
+/* Nur die zweite Spalte bekommt eine border-left */
+.column:nth-child(2) {
+    border-left: 3px solid #11C40E;
+}
