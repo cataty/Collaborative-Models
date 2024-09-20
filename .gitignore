@@ -1,0 +1,44 @@
+# macOS-spezifische Dateien
+.DS_Store
+
+# Log-Dateien
+*.log
+
+# Node.js-Module
+node_modules/
+
+# Umgebungsvariablen-Dateien
+.env
+
+# IDE-spezifische Dateien (z.B. für VSCode)
+.vscode/
+.idea/
+
+# Betriebssystem generierte Dateien
+Thumbs.db
+.DS_Store
+
+# Temporäre Dateien
+*.tmp
+*.swp
+*.bak
+*.old
+
+# Kompilierte Dateien
+*.o
+*.out
+*.class
+
+# Backup-Dateien
+*.bak
+*.orig
+*.save
+
+# Coverage-Dateien für Testberichte
+coverage/
+*.lcov
+
+# Python-Dateien (falls relevant)
+__pycache__/
+*.pyc
+*.pyo
