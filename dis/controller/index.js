@@ -1,5 +1,7 @@
 const socket = io('http://localhost:5555')
 const deviceName = 'controller'
+let history = []
+let historyList = document.getElementById("history")
 
 function init () {
   socket.emit('connect-device', deviceName)
@@ -9,15 +11,20 @@ function init () {
   })
 
   socket.on('message', message => {
-    if (message.receiver === deviceName) {
       console.log(message)
-    }
+      history.push(message)
+      let li = document.createElement("li")
+      li.innerHTML = message.response
+      console.log(li)
+      historyList.appendChild(li)
   })
 }
 
 function startDiscussion () {
   const topic = document.getElementById('topic').value
   socket.emit('discuss', topic)
+  history = []
+  historyList.innerHTML = ""
 }
 
 const startButton = document.getElementById('start-discussion')
