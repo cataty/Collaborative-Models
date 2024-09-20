@@ -12,7 +12,8 @@ p, li {
     font-size: 30px;
     color: #11C40E;
     text-transform: uppercase;
-    list-style:none
+    list-style:none;
+    padding: 20px;
 }
 
 
@@ -20,7 +21,7 @@ p, li {
     font-family: "VCR_OSD_MONO";
     font-size: 30px;
     color: #11C40E;
-    with: 100%;
+    width: 100%;
     padding-top: 15px;
     padding-bottom: 20px;
     border-bottom: 3px solid #11C40E;
