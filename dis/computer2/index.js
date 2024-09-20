@@ -40,14 +40,14 @@ function init () {
   socket.on('computing', currentDevice => {
     if (currentDevice === deviceName) {
       console.log('Computing on this device...')
-      document.body.style.backgroundColor = '#1c3a2d'
+      //document.body.style.backgroundColor = '#1c3a2d'
     }
   })
 
   socket.on('message', message => {
     if (message.receiver === deviceName) {
       console.log(message)
-      document.body.style.backgroundColor = '#0b1712'
+      //document.body.style.backgroundColor = '#0b1712'
       response.innerHTML = message.response
       speakWrite(message.response)
     } else {
@@ -57,7 +57,7 @@ function init () {
   })
 
   socket.on('abort', () => {
-    document.body.style.backgroundColor = '#0b1712'
+    //document.body.style.backgroundColor = '#0b1712'
     response.innerHTML = ' '
   })
 }
