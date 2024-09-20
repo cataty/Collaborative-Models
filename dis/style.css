@@ -1,20 +1,24 @@
 body {
     background-color: black;
-}
-@font-face {
-    font-family: "VCR_OSD_MONO"; /* Name der Schriftart */
-    src: url("../fonts/vcr.ttf") format("truetype");
-}
-
-
-p, li {
     font-family: "VCR_OSD_MONO";
     font-size: 30px;
     color: #11C40E;
     text-transform: uppercase;
+}
+
+@font-face {
+    font-family: "VCR_OSD_MONO"; /* Name der Schriftart */
+    src: url("../assets/vcr.ttf") format("truetype");
+}
+
+
+p, li, .column {
     list-style:none;
     padding: 20px;
+    flex: 1;
 }
+
+/* Controller Styles */
 
 
 .hinweis {
@@ -46,22 +50,16 @@ textarea {
   border: none;
 }
 
+/* textarea:focus{
+    outline:none;
+} */
+
 label {
   display: block;
   margin-bottom: 10px;
 }
 
-#abort-discussion {
-    padding: 10px;
-    background-color: black;
-    color: #11C40E;
-    font-size: 30px;
-    text-transform: uppercase;
-    border: 3px solid #11C40E;
-    font-family: "VCR_OSD_MONO";
-    cursor: pointer;
-}
-#start-discussion {
+#start-discussion, #abort-discussion {
     padding: 10px;
     background-color: black;
     color: #11C40E;
@@ -72,27 +70,49 @@ label {
     cursor: pointer;
 }
 
-
-/* Container für die zwei Spalten */
 .content {
     display: flex;
     height: calc(100vh - 50px); /* Höhe des Fensters minus Marquee */
 }
-/* Jede Spalte */
-.column {
-    flex: 1;
-    padding: 20px;
-}
-/* Nur die zweite Spalte bekommt eine border-left */
-.column:nth-child(2) {
-    border-left: 3px solid #11C40E;
-}
 
+.column:last-child{
+    height:100%;
+    border-left: 3px solid #11C40E;
+    overflow: hidden;
+}
 
 textarea {
     resize: none;
   }
 
 input{
-    cursor:"block";
+    cursor:block;
+    cursor: cell;
 }
+
+/* Agent Styles */
+
+.image-container {
+  position: absolute;
+    top:0;
+    left:0;
+    z-index:2;
+  width: 80%;
+  height: 80%;
+  padding:10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+  
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .hidden {
+    display: none;
+  }

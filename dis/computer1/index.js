@@ -17,10 +17,12 @@ function speakWrite (text) {
     const word = words.slice(prevChar, char).join('')
     prevChar = char
 
+
     const span = document.createElement('span')
     span.textContent = word
     span.id = `word-${event.charIndex}`
     textContainer.appendChild(span)
+    console.log(span)
 
     textContainer.scrollTop = textContainer.scrollHeight
   })

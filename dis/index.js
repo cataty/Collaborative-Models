@@ -16,12 +16,14 @@ const io = Socket(server, {
 
 let currentTurn = 'computer1'
 let computing = false
-const model = "llama3.1"
+const model = "jerry2"
 const prompt = ""
 
 app.use('/controller', express.static(path.join(__dirname, './controller')))
 app.use('/computer1', express.static(path.join(__dirname, './computer1')))
 app.use('/computer2', express.static(path.join(__dirname, './computer2')))
+app.use('/assets', express.static(path.join(__dirname, './assets')))
+app.use('/', express.static(path.join(__dirname, './')))
 
 io.on('connection', socket => {
   socket.on('connect-device', deviceName => {
