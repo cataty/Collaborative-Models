@@ -16,7 +16,9 @@ const io = Socket(server, {
 
 let currentTurn = 'computer1'
 let computing = false
+let history = []
 const model = "llama3.1"
+const prompt = ""
 
 app.use('/controller', express.static(path.join(__dirname, './controller')))
 app.use('/computer1', express.static(path.join(__dirname, './computer1')))
@@ -31,6 +33,8 @@ io.on('connection', socket => {
   socket.on('discuss', topic => {
     console.log('New discussion, topic:', topic)
     computing = true
+    history = []
+    saveMessages (topic)
     loop(topic)
   })
 
@@ -94,12 +98,19 @@ async function compute (topic) {
   }
 }
 
+function saveMessages (message){
+  history.push(message)
+  let li = document.createElement("li")
+  li.innerHTML = message
+  document.scroll (getElementById("history").lastChild.offsetHeight)
+  document.getElementById("history").appendChild(li)
+}
+
 function updateScreens (response) {
   io.sockets.emit('message', {
     receiver: currentTurn,
     response: response
   })
-
   if (currentTurn === 'computer1') {
     currentTurn = 'computer2'
   } else if (currentTurn === 'computer2') {
@@ -112,6 +123,7 @@ async function loop (initialTopic) {
   while (computing) {
     response = await compute(topic)
     updateScreens(response)
+    saveMessages (response)
     topic = response
   }
 }
