@@ -59,6 +59,17 @@ label {
     font-family: "VCR_OSD_MONO";
     cursor: pointer;
 }
+#start-discussion {
+    padding: 10px;
+    background-color: black;
+    color: #11C40E;
+    font-size: 30px;
+    text-transform: uppercase;
+    border: 3px solid #11C40E;
+    font-family: "VCR_OSD_MONO";
+    cursor: pointer;
+}
+
 
 /* Container für die zwei Spalten */
 .content {
@@ -73,4 +84,13 @@ label {
 /* Nur die zweite Spalte bekommt eine border-left */
 .column:nth-child(2) {
     border-left: 3px solid #11C40E;
+}
+
+
+textarea {
+    resize: none;
+  }
+
+input{
+    cursor:"block";
 }
