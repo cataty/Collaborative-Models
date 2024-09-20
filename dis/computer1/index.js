@@ -3,6 +3,7 @@ const deviceName = 'computer1'
 const response = document.querySelector('#response')
 
 function speakWrite (text) {
+  document.querySelector('.image-container').classList.add("hidden")
   document.querySelector('body').classList.add('tts')
   const textContainer = document.querySelector('#response')
   textContainer.innerHTML = ''
@@ -27,6 +28,7 @@ function speakWrite (text) {
   utterance.addEventListener('end', event => {
     document.querySelector('body').classList.remove('tts')
     socket.emit('speech-end', deviceName)
+    document.querySelector('.image-container').classList.remove("hidden")
   })
 
   //utterance.voice = (deviceName === "computer1") ? "Microsoft Hedda - German (Germany)" : "Microsoft Stefan - German (Germany)" 

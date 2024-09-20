@@ -21,3 +21,13 @@ body {
   object-fit: cover;
   object-position: center;
 }
+
+#response {
+  font-family: "VCR_OSD_MONO";
+  font-size: 30px;
+  color: #11C40E;
+  text-transform: uppercase;
+}
+.hidden {
+  display: none;
+}
