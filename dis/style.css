@@ -8,7 +8,7 @@ body {
 
 @font-face {
     font-family: "VCR_OSD_MONO"; /* Name der Schriftart */
-    src: url("../assets/vcr.ttf") format("truetype");
+    src: url("assets/vcr.ttf") format("truetype");
 }
 
 
