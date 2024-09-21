@@ -18,8 +18,10 @@
     <div class="content">
       <div class="column">
         <p>Gib ein Diskussionsthema ein<br>// Drücke enter zum starten</p>
-          <p>></p>
-          <textarea maxlength="100" resize="none" id="topic" placeholder="|"></textarea><br>
+        <div id="inputarea">
+          <p id="pfeilnachrechts">></p>
+          <textarea id="topic" maxlength="80"></textarea>
+       </div>
           <button id="start-discussion">Start</button>
          <button id="abort-discussion">Konversation abbrechen</button>
           </div>
