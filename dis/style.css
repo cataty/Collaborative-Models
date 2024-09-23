@@ -77,9 +77,22 @@ textarea {
     outline:none;
 } */
 
-label {
+/*label {
   display: block;
   margin-bottom: 10px;
+}*/
+
+.column {
+  position: relative; /* Ensures the buttons stay inside the column */
+}
+
+.buttons {
+  position: absolute;
+  bottom: 0; /* Sticks the buttons to the bottom of the column */
+  width: calc(100% - 50px); /* Ensures buttons take up full width */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between buttons */
 }
 
 #start-discussion, #abort-discussion {
@@ -95,7 +108,7 @@ label {
 
 .content {
     display: flex;
-    height: calc(100vh - 50px); /* Höhe des Fensters minus Marquee */
+    height: calc(100vh - 120px); /* Höhe des Fensters minus Marquee */
 }
 
 .column:last-child{

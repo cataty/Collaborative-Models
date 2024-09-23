@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Controller</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
-    <link rel="stylesheet" href="../style.css">
-  </head>
-  <body>
-     <!-- Marquee Zeile oben -->
-    <div class="hinweis"> 
-      <marquee scrolldelay="60">
-        Alle KI-generierten Inhalte sind frei halluziniert. Jegliche Ähnlichkeit zur Realität ist nur das Ergebnis einer statistischen Auswertung von Buchstabenfolgen. Wir übernehmen keine Verantwortung.
-      </marquee>
-    </div>
 
-    <!-- Zwei Spalten Layout -->
-    <div class="content">
-      <div class="column">
-        <p>Gib ein Diskussionsthema ein<br>// Drücke enter zum starten</p>
-        <div id="inputarea">
-          <p id="pfeilnachrechts">></p>
-          <textarea id="topic" maxlength="80"></textarea>
-       </div>
-          <button id="start-discussion">Start</button>
-         <button id="abort-discussion">Konversation abbrechen</button>
-          </div>
-      <div class="column">
-         <ul id="history"> 
-        </ul> 
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <title>Controller</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <!-- Marquee Zeile oben -->
+  <div class="hinweis">
+    <marquee scrolldelay="60">
+      Alle KI-generierten Inhalte sind frei halluziniert. Jegliche Ähnlichkeit zur Realität ist nur das Ergebnis einer
+      statistischen Auswertung von Buchstabenfolgen. Wir übernehmen keine Verantwortung.
+    </marquee>
   </div>
 
-    
-    <script src="index.js"></script>
-  </body>
+  <!-- Zwei Spalten Layout -->
+  <div class="content">
+    <div class="column">
+      <p>Gib ein Diskussionsthema ein<br>// Drücke enter zum starten</p>
+      <div id="inputarea">
+        <p id="pfeilnachrechts">></p>
+        <textarea id="topic" maxlength="80"></textarea>
+      </div>
+      
+      <div class="buttons">
+        <!--<button id="start-discussion">Start</button>-->
+        <button id="abort-discussion">Konversation abbrechen</button>
+      </div>
+    </div>
+
+    <div class="column">
+      <ul id="history">
+      </ul>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
 </html>
