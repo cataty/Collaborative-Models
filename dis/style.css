@@ -106,6 +106,17 @@ textarea {
     cursor: pointer;
 }
 
+
+#start-discussion, #abort-discussion:hover {
+  color: black; 
+  background-color: #11C40E;
+}
+
+#start-discussion, #abort-discussion:active {
+  background-color: #11C40E;
+  transform: translateY(4px);
+}
+
 .content {
     display: flex;
     height: calc(100vh - 120px); /* Höhe des Fensters minus Marquee */
