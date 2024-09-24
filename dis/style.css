@@ -4,6 +4,7 @@ body {
     font-size: 30px;
     color: #11C40E;
     text-transform: uppercase;
+    cursor: url('assets/cursor.svg'), auto;
 }
 
 @font-face {
@@ -41,6 +42,7 @@ textarea {
     font-size: 30px;
     color: #11C40E;
     background: black;
+    caret-shape: block; // is not supported by any browser????
 }
 
 
@@ -52,6 +54,7 @@ textarea {
 #inputarea {
   position: relative;
   padding-bottom: 20px;
+  margin-top: -40px;
 }
 
 #pfeilnachrechts {
@@ -71,6 +74,7 @@ textarea {
   margin-left: 1.8em; /* prevents the user input from going behind the arrow(>) */
   outline: none; /* Prevents blue outline when focused */
   resize: none; 
+  cursor: url('assets/cursortext.svg'), auto;
 }
 
 /* textarea:focus{
@@ -103,10 +107,10 @@ textarea {
     text-transform: uppercase;
     border: 3px solid #11C40E;
     font-family: "VCR_OSD_MONO";
-    cursor: pointer;
+    cursor: url('assets/cursorclick.svg'), auto;
 }
 
-
+/* hover-effect */
 #start-discussion, #abort-discussion:hover {
   color: black; 
   background-color: #11C40E;
@@ -128,9 +132,6 @@ textarea {
     overflow: hidden;
 }
 
-textarea {
-    resize: none;
-}
 
 input{
     cursor:block;

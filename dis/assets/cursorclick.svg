@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="19" height="24" viewBox="0 0 19 24">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #000;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3 {
+        fill: #11c40e;
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        stroke-width: .25px;
+      }
+    </style>
+  </defs>
+  <polygon class="cls-3" points="16.5 9 13.5 9 13.5 7 7.5 7 7.5 2 5.5 2 5.5 12 3.5 12 3.5 11 1.5 11 1.5 13 2.5 13 2.5 16 4.5 16 4.5 18 5.5 18 5.5 21 6.5 21 6.5 22 14.5 22 14.5 20 15.5 20 15.5 17 16.5 17 16.5 9"/>
+  <g>
+    <rect class="cls-1" x="1.5" y="13" width="1" height="1"/>
+    <rect class="cls-2" x="2.5" y="14" width="1" height="2"/>
+    <rect class="cls-2" x="3.5" y="16" width="1" height="2"/>
+    <rect class="cls-2" x="4.5" y="18" width="1" height="2"/>
+    <polygon class="cls-2" points="14.5 22 6.5 22 6.5 20 5.5 20 5.5 22 5.5 23 15.5 23 15.5 22 15.5 20 14.5 20 14.5 22"/>
+    <rect class="cls-2" x="15.5" y="17" width="1" height="3"/>
+    <rect class="cls-2" x="16.5" y="10" width="1" height="7"/>
+    <polygon class="cls-2" points="4.5 12 4.5 15 5.5 15 5.5 2 4.5 2 4.5 11 3.5 11 3.5 12 4.5 12"/>
+    <polygon class="cls-2" points="3.5 11 3.5 10 .5 10 .5 11 .5 13 1.5 13 1.5 11 3.5 11"/>
+    <rect class="cls-2" x="15.5" y="9" width="1" height="1"/>
+    <polygon class="cls-2" points="13.5 12 14.5 12 14.5 9 15.5 9 15.5 8 13.5 8 13.5 9 13.5 12"/>
+    <polygon class="cls-2" points="11.5 11 11.5 8 13.5 8 13.5 7 11.5 7 10.5 7 10.5 11 11.5 11"/>
+    <polygon class="cls-2" points="8.5 11 8.5 7 10.5 7 10.5 6 8.5 6 8.5 2 7.5 2 7.5 11 8.5 11"/>
+    <rect class="cls-2" x="5.5" y="1" width="2" height="1"/>
+  </g>
+</svg>

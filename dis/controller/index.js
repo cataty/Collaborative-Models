@@ -61,6 +61,7 @@ abortButton.addEventListener('click', () => {
   discussionActive = false;
   document.getElementById('topic').disabled = false;
   document.getElementById('topic').value = '';
+  document.getElementById('topic').focus();
 });
 
 const startButton = document.getElementById('start-discussion')
