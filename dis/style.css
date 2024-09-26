@@ -18,6 +18,9 @@ p, li, .column {
     padding: 20px;
     flex: 1;
 }
+.p-2 {
+  color: #ff57c2;
+}
 
 /* Controller Styles */
 
