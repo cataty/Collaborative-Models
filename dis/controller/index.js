@@ -18,7 +18,10 @@ function init() {
     li.innerHTML = message.response
     console.log(li)
     historyList.appendChild(li)
-  })
+
+    // Nach dem Hinzufügen des neuen Eintrags automatisch nach unten scrollen
+    scrollToBottom();
+  });
 }
 
 document.getElementById("topic").addEventListener("keypress", e => {
@@ -67,5 +70,9 @@ abortButton.addEventListener('click', () => {
 const startButton = document.getElementById('start-discussion')
 startButton.addEventListener('click', startDiscussion)
 
+// Funktion zum automatischen Scrollen nach unten
+function scrollToBottom() {
+  historyList.scrollTop = historyList.scrollHeight;
+}
 
 init()

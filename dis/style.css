@@ -141,6 +141,11 @@ input{
     cursor: cell;
 }
 
+#history {
+  max-height: 90%;
+  overflow-y: auto;
+}
+
 /* Agent Styles */
 
 .image-container {
