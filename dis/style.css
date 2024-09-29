@@ -78,6 +78,7 @@ textarea {
   outline: none; /* Prevents blue outline when focused */
   resize: none; 
   cursor: url('assets/cursortext.svg'), auto;
+  text-transform: uppercase;
 }
 
 /* textarea:focus{

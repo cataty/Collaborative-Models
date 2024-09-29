@@ -67,6 +67,22 @@ abortButton.addEventListener('click', () => {
   document.getElementById('topic').focus();
 });
 
+
+// ABBRECHEN MIT CRTL + C
+
+document.addEventListener('keydown', (e) => {
+  if (e.ctrlKey && e.key === 'c') {
+    // Emit the 'abort' event and reset discussion state
+    socket.emit('abort');
+
+    // Diskussion beenden und Textfeld entsperren
+    discussionActive = false;
+    document.getElementById('topic').disabled = false;
+    document.getElementById('topic').value = '';
+    document.getElementById('topic').focus();
+  }
+});
+
 const startButton = document.getElementById('start-discussion')
 startButton.addEventListener('click', startDiscussion)
 
