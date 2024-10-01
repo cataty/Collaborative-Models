@@ -1,7 +1,6 @@
 const socket = io('http://localhost:5555')
 const deviceName = 'computer2'
 const response = document.querySelector('#response')
-let isAborted = false // Flag, um Abbruchstatus zu verfolgen
 
 function speakWrite (text) {
   document.querySelector('.image-container').classList.add("hidden")
@@ -13,18 +12,11 @@ function speakWrite (text) {
   const utterance = new SpeechSynthesisUtterance(text)
   let prevChar = 0
 
-  // Abbruchüberprüfung vor Start der Sprachausgabe
-  if (isAborted) return // Falls abgebrochen, nichts tun
-
   utterance.addEventListener('boundary', event => {
-    if (isAborted) {
-      window.speechSynthesis.cancel() // Sprachausgabe stoppen
-      return
-    }
-
     const char = event.charIndex + event.charLength
     const word = words.slice(prevChar, char).join('')
     prevChar = char
+
 
     const span = document.createElement('span')
     span.textContent = word
@@ -36,11 +28,9 @@ function speakWrite (text) {
   })
 
   utterance.addEventListener('end', event => {
-    if (!isAborted) {
-      document.querySelector('body').classList.remove('tts')
-      socket.emit('speech-end', deviceName)
-      document.querySelector('.image-container').classList.remove("hidden")
-    }
+    document.querySelector('body').classList.remove('tts')
+    socket.emit('speech-end', deviceName)
+    document.querySelector('.image-container').classList.remove("hidden")
   })
 
   //utterance.voice = (deviceName === "computer1") ? "Microsoft Hedda - German (Germany)" : "Microsoft Stefan - German (Germany)" 
@@ -57,25 +47,20 @@ function init () {
       //document.body.style.backgroundColor = '#1c3a2d'
     }
   })
-
-  socket.on('message', message => {
-    if (message.receiver === deviceName) {
-      console.log(message)
-              //document.body.style.backgroundColor = '#0b1712'
-      response.innerHTML = message.response
-      isAborted = false // Setzt das Abbruch-Flag zurück
-      speakWrite(message.response)
-    } else {
-      console.log('received message for another device, clearing response')
-      response.innerHTML = ' '
-    }
-  })
-
-  // Bei Abbruch stoppen
+    socket.on('message', message => {
+      if (message.receiver === deviceName) {
+        console.log(message)
+        //document.body.style.backgroundColor = '#0b1712'
+        response.innerHTML = message.response
+        speakWrite(message.response)
+      } else {
+        console.log('received message for another device, clearing response')
+        response.innerHTML = ' '
+      }
+    })
+  
   socket.on('abort', () => {
-    console.log('Abort received, stopping everything...')
-    isAborted = true // Setzt das Abbruch-Flag auf true
-    window.speechSynthesis.cancel() // Sofortige Beendigung der Sprachausgabe
+    window.speechSynthesis.cancel();
     document.body.style.backgroundColor = '#0b1712'
     response.innerHTML = ' '
   })
