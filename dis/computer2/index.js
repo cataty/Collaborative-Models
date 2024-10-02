@@ -33,6 +33,7 @@ function speakWrite (text) {
   utterance.addEventListener('end', event => {
     document.querySelector('body').classList.remove('tts')
     socket.emit('speech-end', deviceName)
+    response.innerHTML = ' '
     document.querySelector('.image-container').classList.remove("hidden")
   })
 
