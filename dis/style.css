@@ -147,6 +147,10 @@ input{
   overflow-y: auto;
 }
 
+#history:focus {
+  outline: none;
+}
+
 /* Agent Styles */
 
 .image-container {

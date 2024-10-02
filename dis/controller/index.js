@@ -53,6 +53,9 @@ function startDiscussion() {
   // Textarea sperren
   //document.getElementById('topic').value = '';
   document.getElementById('topic').disabled = true;
+
+  // Setze den Fokus auf die history Spalte
+  historyList.focus();
 }
 
 // Abort-Button-Listener
