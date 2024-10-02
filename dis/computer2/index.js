@@ -3,7 +3,6 @@ const deviceName = 'computer2'
 const response = document.querySelector('#response')
 
 function speakWrite (text) {
-  document.querySelector('.image-container').classList.add("hidden")
   document.querySelector('body').classList.add('tts')
   const textContainer = document.querySelector('#response')
   textContainer.innerHTML = ''
@@ -11,6 +10,10 @@ function speakWrite (text) {
   const words = text.split('')
   const utterance = new SpeechSynthesisUtterance(text)
   let prevChar = 0
+
+  utterance.addEventListener('start', () => {
+    document.querySelector('.image-container').classList.add("hidden")
+  });
 
   utterance.addEventListener('boundary', event => {
     const char = event.charIndex + event.charLength
