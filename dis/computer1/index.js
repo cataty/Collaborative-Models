@@ -1,8 +1,10 @@
 const socket = io('http://localhost:5555')
 const deviceName = 'computer1'
 const response = document.querySelector('#response')
+let discussionActive = true;  // Statusvariable für aktive Diskussion
 
 function speakWrite (text) {
+  if (!discussionActive) return;  // Keine Ausgabe, wenn Diskussion abgebrochen ist
   document.querySelector('body').classList.add('tts')
   const textContainer = document.querySelector('#response')
   textContainer.innerHTML = ''
@@ -55,8 +57,10 @@ function init () {
       if (message.receiver === deviceName) {
         console.log(message)
         //document.body.style.backgroundColor = '#0b1712'
-        response.innerHTML = message.response
-        speakWrite(message.response)
+        if (discussionActive === true) {
+          response.innerHTML = message.response
+          speakWrite(message.response)
+        }
       } else {
         console.log('received message for another device, clearing response')
         response.innerHTML = ' '
@@ -65,8 +69,10 @@ function init () {
   
   socket.on('abort', () => {
     window.speechSynthesis.cancel();
-    document.body.style.backgroundColor = '#0b1712'
+    discussionActive = false;  // Diskussion ist abgebrochen
+    //document.body.style.backgroundColor = '#0b1712'
     response.innerHTML = ' '
+    document.querySelector('.image-container').classList.remove("hidden")
   })
 }
 
