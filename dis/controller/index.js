@@ -62,7 +62,6 @@ function startDiscussion() {
 const abortButton = document.getElementById('abort-discussion');
 abortButton.addEventListener('click', () => {
   socket.emit('abort');
-  history = [];
 
   // Diskussion beenden und Textfeld entsperren
   discussionActive = false;
@@ -78,7 +77,6 @@ document.addEventListener('keydown', (e) => {
   if (e.ctrlKey && e.key === 'c') {
     // Emit the 'abort' event and reset discussion state
     socket.emit('abort');
-    history = [];
 
     // Diskussion beenden und Textfeld entsperren
     discussionActive = false;
