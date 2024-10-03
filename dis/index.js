@@ -34,6 +34,7 @@ io.on('connection', socket => {
   socket.on('discuss', topic => {
     console.log('New discussion, topic:', topic)
     computing = true
+    io.sockets.emit('discuss')
     loop(topic)
   })
 

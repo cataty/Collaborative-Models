@@ -53,6 +53,10 @@ function init () {
       //document.body.style.backgroundColor = '#1c3a2d'
     }
   })
+  socket.on('discuss', () => {
+    discussionActive = true;  // Diskussion ist active
+    //document.body.style.backgroundColor = '#0b1712'
+  })
     socket.on('message', message => {
       if (message.receiver === deviceName) {
         console.log(message)
