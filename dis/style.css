@@ -4,11 +4,12 @@ body {
     font-size: 30px;
     color: #11C40E;
     text-transform: uppercase;
+    cursor: url('assets/cursor.svg'), auto;
 }
 
 @font-face {
     font-family: "VCR_OSD_MONO"; /* Name der Schriftart */
-    src: url("../assets/vcr.ttf") format("truetype");
+    src: url("assets/vcr.ttf") format("truetype");
 }
 
 
@@ -16,6 +17,9 @@ p, li, .column {
     list-style:none;
     padding: 20px;
     flex: 1;
+}
+.p-2 {
+  color: #ff57c2;
 }
 
 /* Controller Styles */
@@ -41,22 +45,62 @@ textarea {
     font-size: 30px;
     color: #11C40E;
     background: black;
+    caret-shape: block; // is not supported by any browser????
 }
 
+
+// TEXTAREA
+
 textarea {
-  padding: 10px;
-  max-width: 100%;
-  border-radius: 5px;
-  border: none;
+}
+
+#inputarea {
+  position: relative;
+  padding-bottom: 20px;
+  margin-top: -40px;
+}
+
+#pfeilnachrechts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  padding-left: 20px;
+}
+
+#topic {
+  border: 0;
+  padding: 0px;
+  width: calc(100% - 3em);
+  height: 200px;
+  margin-left: 1.8em; /* prevents the user input from going behind the arrow(>) */
+  outline: none; /* Prevents blue outline when focused */
+  resize: none; 
+  cursor: url('assets/cursortext.svg'), auto;
+  text-transform: uppercase;
 }
 
 /* textarea:focus{
     outline:none;
 } */
 
-label {
+/*label {
   display: block;
   margin-bottom: 10px;
+}*/
+
+.column {
+  position: relative; /* Ensures the buttons stay inside the column */
+}
+
+.buttons {
+  position: absolute;
+  bottom: 0; /* Sticks the buttons to the bottom of the column */
+  width: calc(100% - 50px); /* Ensures buttons take up full width */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between buttons */
 }
 
 #start-discussion, #abort-discussion {
@@ -67,12 +111,23 @@ label {
     text-transform: uppercase;
     border: 3px solid #11C40E;
     font-family: "VCR_OSD_MONO";
-    cursor: pointer;
+    cursor: url('assets/cursorclick.svg'), auto;
+}
+
+/* hover-effect */
+#start-discussion, #abort-discussion:hover {
+  color: black; 
+  background-color: #11C40E;
+}
+
+#start-discussion, #abort-discussion:active {
+  background-color: #11C40E;
+  transform: translateY(4px);
 }
 
 .content {
     display: flex;
-    height: calc(100vh - 50px); /* Höhe des Fensters minus Marquee */
+    height: calc(100vh - 120px); /* Höhe des Fensters minus Marquee */
 }
 
 .column:last-child{
@@ -81,13 +136,15 @@ label {
     overflow: hidden;
 }
 
-textarea {
-    resize: none;
-  }
 
 input{
     cursor:block;
     cursor: cell;
+}
+
+#history {
+  max-height: 90%;
+  overflow-y: auto;
 }
 
 /* Agent Styles */
