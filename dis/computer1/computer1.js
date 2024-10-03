@@ -28,12 +28,12 @@ function speakWrite (text) {
   })
 
   utterance.addEventListener('end', event => {
-    document.querySelector('body').classList.remove('tts')
     socket.emit('speech-end', deviceName)
-    document.querySelector('.image-container').classList.remove("hidden")
-  })
+    setTimeout(
+      document.querySelector('.image-container').classList.remove("hidden")
+    ,3000)
 
-  //utterance.voice = (deviceName === "computer1") ? "Microsoft Hedda - German (Germany)" : "Microsoft Stefan - German (Germany)" 
+  })
 
   window.speechSynthesis.speak(utterance)
 }
