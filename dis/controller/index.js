@@ -11,11 +11,11 @@ function init() {
     console.log('Computing on', currentDevice)
   })
 
-  socket.on('message', message => {
-    console.log(message)
-    history.push(message)
+  socket.on('speech-end', text => {
+    console.log(text)
+    history.push(text)
     let li = document.createElement("li")
-    li.innerHTML = message.response
+    li.innerHTML = text
     console.log(li)
     historyList.appendChild(li)
 

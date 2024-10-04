@@ -38,6 +38,11 @@ io.on('connection', socket => {
     loop(topic)
   })
 
+  socket.on('speech-end', text => {
+    console.log('speech ended')
+    io.sockets.emit('speech-end', text)
+  })
+
   socket.on('abort', () => {
     console.log('Discussion aborted')
     computing = false
