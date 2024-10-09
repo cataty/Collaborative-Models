@@ -16,6 +16,7 @@ const io = Socket(server, {
 
 let currentTurn = 'computer1'
 let computing = false
+let currentTopic = "";
 const model = "jerry2"
 const prompt = ""
 
@@ -33,6 +34,7 @@ io.on('connection', socket => {
 
   socket.on('discuss', topic => {
     console.log('New discussion, topic:', topic)
+    currentTopic = topic;
     computing = true
     io.sockets.emit('discuss')
     loop(topic)
@@ -86,7 +88,7 @@ async function generate (model, prompt) {
 }
 
 async function compute (topic) {
-  computing = true
+  if (!computing)return;
   io.sockets.emit('computing', currentTurn)
   if (currentTurn === 'computer1') {
     console.log('Computing on computer 1...', topic)
@@ -104,7 +106,12 @@ async function compute (topic) {
 }
 
 
-function updateScreens (response) {
+function updateScreens (response, initialTopic) {
+  if (!computing)return;
+  if (currentTopic !== initialTopic) {
+    console.log('Old topic detected.');
+    return; 
+  }
   io.sockets.emit('message', {
     receiver: currentTurn,
     response: response
@@ -116,11 +123,19 @@ function updateScreens (response) {
   }
 }
 
-async function loop (initialTopic) {
-  let topic = initialTopic
+async function loop(initialTopic) {
+  let topic = initialTopic;
   while (computing) {
-    response = await compute(topic)
-    updateScreens(response)
-    topic = response
+    
+    // Prüfe, ob das Thema noch aktuell ist
+    if (currentTopic !== initialTopic) {
+      console.log('Old topic detected, skipping computation.');
+      break;
+    }
+    
+    let response = await compute(topic);
+    if (!computing) break;
+    updateScreens(response, initialTopic);
+    topic = response;
   }
 }
