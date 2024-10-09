@@ -11,11 +11,11 @@ function init() {
     console.log('Computing on', currentDevice)
   })
 
-  socket.on('speech-end', text => {
+  socket.on('speech-end', ({ text, device }) => {
     console.log(text)
     history.push(text)
     let li = document.createElement("li")
-    li.innerHTML = text
+    li.innerHTML = `${device}:<br>${text}`
     console.log(li)
     historyList.appendChild(li)
 
