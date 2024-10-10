@@ -45,14 +45,11 @@ textarea {
     font-size: 30px;
     color: #11C40E;
     background: black;
-    caret-shape: block; // is not supported by any browser????
+    caret-shape: block; /* is not supported by any browser????*/
 }
 
 
-// TEXTAREA
-
-textarea {
-}
+/* TEXTAREA*/
 
 #inputarea {
   position: relative;
@@ -106,10 +103,10 @@ textarea {
 #start-discussion, #abort-discussion {
     padding: 10px;
     background-color: black;
-    color: #11C40E;
+    color: black;
     font-size: 30px;
     text-transform: uppercase;
-    border: 3px solid #11C40E;
+    border: 3px solid black;
     font-family: "VCR_OSD_MONO";
     cursor: url('assets/cursorclick.svg'), auto;
 }
@@ -117,11 +114,11 @@ textarea {
 /* hover-effect */
 #start-discussion, #abort-discussion:hover {
   color: black; 
-  background-color: #11C40E;
+  background-color: black;
 }
 
 #start-discussion, #abort-discussion:active {
-  background-color: #11C40E;
+  background-color: black;
   transform: translateY(4px);
 }
 
@@ -145,6 +142,10 @@ input{
 #history {
   max-height: 90%;
   overflow-y: auto;
+}
+
+#history:focus {
+  outline: none;
 }
 
 /* Agent Styles */

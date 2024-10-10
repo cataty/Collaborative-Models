@@ -11,11 +11,13 @@ function init() {
     console.log('Computing on', currentDevice)
   })
 
-  socket.on('message', message => {
-    console.log(message)
-    history.push(message)
+
+  socket.on('speech-end', ({ text, device }) => {
+    console.log(text)
+    history.push(text)
     let li = document.createElement("li")
-    li.innerHTML = message.response
+    li.innerHTML = `${device}:<br>${text}`
+
     console.log(li)
     historyList.appendChild(li)
 
@@ -53,12 +55,20 @@ function startDiscussion() {
   // Textarea sperren
   //document.getElementById('topic').value = '';
   document.getElementById('topic').disabled = true;
+
+
+  // Setze den Fokus auf die history Spalte
+  historyList.focus();
+
 }
 
 // Abort-Button-Listener
 const abortButton = document.getElementById('abort-discussion');
 abortButton.addEventListener('click', () => {
   socket.emit('abort');
+
+  historyList.innerHTML = "";
+
 
   // Diskussion beenden und Textfeld entsperren
   discussionActive = false;
@@ -74,6 +84,9 @@ document.addEventListener('keydown', (e) => {
   if (e.ctrlKey && e.key === 'c') {
     // Emit the 'abort' event and reset discussion state
     socket.emit('abort');
+
+    historyList.innerHTML = "";
+
 
     // Diskussion beenden und Textfeld entsperren
     discussionActive = false;
