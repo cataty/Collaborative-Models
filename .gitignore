@@ -4,6 +4,9 @@
 # Log-Dateien
 *.log
 
+# history
+.history/
+
 # Node.js-Module
 node_modules/
 

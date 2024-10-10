@@ -40,8 +40,6 @@ function speakWrite (text) {
     document.querySelector('.image-container').classList.remove("hidden")
   })
 
-  //utterance.voice = (deviceName === "computer1") ? "Microsoft Hedda - German (Germany)" : "Microsoft Stefan - German (Germany)" 
-
   window.speechSynthesis.speak(utterance)
 }
 
