@@ -64,26 +64,28 @@ server.listen(PORT, () => {
 //   return new Promise(resolve => setTimeout(resolve, 5000))
 // }
 
-async function generate (model, prompt) {
+async function generate (prompt) {
   try {
-    const response = await fetch(`http://localhost:11434/api/generate`, {
+    const response = await fetch('https://proxy.c-e.group/llm/generate', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: ''
+      },
       body: JSON.stringify({
-        model: model,
+        model: 'llama-3.1-70b-versatile',
+        system:
+          "Du bist eine Person, die mit einer anderen Person diskutiert. Bitte antworte entsprechend. Antworte in maximal 5 Sätzen.",
         prompt,
+        temperature: 1,
         stream: false
       })
     })
     const json = await response.json()
-
-    if (json.error) {
-      throw Error('no model')
-    } else {
-      return json
-    }
+    return json
   } catch (error) {
-    console.log(error)
-    console.log('error while fetching', model)
+    console.error('Error:', error)
+    return { error: 'Failed to fetch response from server' }
   }
 }
 
@@ -92,13 +94,13 @@ async function compute (topic) {
   io.sockets.emit('computing', currentTurn)
   if (currentTurn === 'computer1') {
     console.log('Computing on computer 1...', topic)
-    const modelResponse = await generate(model, topic)
+    const modelResponse = await generate(topic)
     return modelResponse.response
     // await fakeCompute()
     // return 'I really like cats. Okay.'
   } else {
     console.log('Computing on computer 2...', topic)
-    const modelResponse = await generate(model, topic)
+    const modelResponse = await generate(topic)
     return modelResponse.response
     // await fakeCompute()
     // return 'I dont like cats. I like dogs more.'
