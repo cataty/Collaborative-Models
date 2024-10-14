@@ -94,13 +94,13 @@ async function compute (topic) {
   io.sockets.emit('computing', currentTurn)
   if (currentTurn === 'computer1') {
     console.log('Computing on computer 1...', topic)
-    const modelResponse = await generate(model, topic)
+    const modelResponse = await generate(topic)
     return modelResponse.response
     // await fakeCompute()
     // return 'I really like cats. Okay.'
   } else {
     console.log('Computing on computer 2...', topic)
-    const modelResponse = await generate(model, topic)
+    const modelResponse = await generate(topic)
     return modelResponse.response
     // await fakeCompute()
     // return 'I dont like cats. I like dogs more.'
