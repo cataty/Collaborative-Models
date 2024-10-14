@@ -94,13 +94,13 @@ async function compute (topic) {
   io.sockets.emit('computing', currentTurn)
   if (currentTurn === 'computer1') {
     console.log('Computing on computer 1...', topic)
-    const modelResponse = await generate(topic)
+    const modelResponse = await generate(model, topic)
     return modelResponse.response
     // await fakeCompute()
     // return 'I really like cats. Okay.'
   } else {
     console.log('Computing on computer 2...', topic)
-    const modelResponse = await generate(topic)
+    const modelResponse = await generate(model, topic)
     return modelResponse.response
     // await fakeCompute()
     // return 'I dont like cats. I like dogs more.'
@@ -127,8 +127,9 @@ function updateScreens (response, initialTopic) {
 
 async function loop(initialTopic) {
   let topic = initialTopic;
-  while (computing) {
-    
+  let responseCount = 0; // Zähler für die Anzahl der Antworten
+  while (computing && responseCount < 20) { // Begrenze die Schleife auf 20 Durchläufe
+    console.log('responsecount: ', responseCount);
     // Prüfe, ob das Thema noch aktuell ist
     if (currentTopic !== initialTopic) {
       console.log('Old topic detected, skipping computation.');
@@ -137,7 +138,16 @@ async function loop(initialTopic) {
     
     let response = await compute(topic);
     if (!computing) break;
+    
     updateScreens(response, initialTopic);
     topic = response;
+    
+    responseCount++; // Zähler erhöhen
+  }
+  
+  if (responseCount >= 20) {
+    console.log('Max responses reached, aborting discussion.');
+    computing = false;
+    io.sockets.emit('abort'); // Abbruch der Diskussion nach 20 Antworten
   }
 }

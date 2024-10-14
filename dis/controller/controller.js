@@ -24,6 +24,16 @@ function init() {
     // Nach dem Hinzufügen des neuen Eintrags automatisch nach unten scrollen
     scrollToBottom();
   });
+  socket.on('abort', () => {
+    historyList.innerHTML = "";
+
+
+  // Diskussion beenden und Textfeld entsperren
+  discussionActive = false;
+  document.getElementById('topic').disabled = false;
+  document.getElementById('topic').value = '';
+  document.getElementById('topic').focus();
+  })
 }
 
 document.getElementById("topic").addEventListener("keypress", e => {
@@ -66,15 +76,6 @@ function startDiscussion() {
 const abortButton = document.getElementById('abort-discussion');
 abortButton.addEventListener('click', () => {
   socket.emit('abort');
-
-  historyList.innerHTML = "";
-
-
-  // Diskussion beenden und Textfeld entsperren
-  discussionActive = false;
-  document.getElementById('topic').disabled = false;
-  document.getElementById('topic').value = '';
-  document.getElementById('topic').focus();
 });
 
 
@@ -84,15 +85,6 @@ document.addEventListener('keydown', (e) => {
   if (e.ctrlKey && e.key === 'c') {
     // Emit the 'abort' event and reset discussion state
     socket.emit('abort');
-
-    historyList.innerHTML = "";
-
-
-    // Diskussion beenden und Textfeld entsperren
-    discussionActive = false;
-    document.getElementById('topic').disabled = false;
-    document.getElementById('topic').value = '';
-    document.getElementById('topic').focus();
   }
 });
 
