@@ -140,6 +140,9 @@ async function loop(initialTopic) {
     if (!computing) break;
     
     updateScreens(response, initialTopic);
+    
+    await new Promise(resolve => setTimeout(resolve, 30000));
+    
     topic = response;
     
     responseCount++; // Zähler erhöhen
