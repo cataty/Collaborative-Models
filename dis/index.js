@@ -19,6 +19,7 @@ let computing = false
 let currentTopic = "";
 const model = "jerry2"
 const prompt = ""
+let speechEnded = false; // Flag, um den Status des Speech-End-Ereignisses zu verfolgen
 
 app.use('/controller', express.static(path.join(__dirname, './controller')))
 app.use('/computer1', express.static(path.join(__dirname, './computer1')))
@@ -42,6 +43,7 @@ io.on('connection', socket => {
 
   socket.on('speech-end', text => {
     console.log('speech ended')
+    speechEnded = true; // Setze die Flag auf true, wenn das Ereignis empfangen wird
     io.sockets.emit('speech-end', text)
   })
 
@@ -141,8 +143,14 @@ async function loop(initialTopic) {
     
     updateScreens(response, initialTopic);
     
-    await new Promise(resolve => setTimeout(resolve, 30000));
-    
+    // auf speech-end warten für nächsten durchlauf der loop
+    while (!speechEnded) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+    // Füge eine 1,5 Sekunden Pause nach speech-end hinzu
+    await new Promise(resolve => setTimeout(resolve, 1500)); // 1,5 Sekunden warten
+
+    speechEnded = false; // Setze die Flag zurück
     topic = response;
     
     responseCount++; // Zähler erhöhen
